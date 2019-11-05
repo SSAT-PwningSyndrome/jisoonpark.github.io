@@ -8,7 +8,7 @@
       html, body {width: 100%; height: 100%; padding: 0; margin: 0;}
       body {overflow:hiddent; background: #FFF;}
       #mydiv {border-style: inset; border-color: grey; overflow: scroll; height: 100%; width: 100%}
-      #iframe {width: 100%; height: 1000%;} <!-- The trick is to set the height here to 1000% -->
+      #iframe {width: 100%; height: 1000%;}
     </style>
     <script
     src="https://code.jquery.com/jquery-3.3.0.min.js"
@@ -22,16 +22,14 @@
 	</div>
 	<script type='text/javascript'>
      window.onload = function() {
-        updateFrameScale('http://www.welstory.com/menu/seoulrnd/menu.jsp', 0, 100, 1.5);                  };
-     function updateFrameScale(url, scrollX, scrollY, scale) {
+     	updateFrameScale('http://www.welstory.com/menu/seoulrnd/menu.jsp', 1.5);};
+     function updateFrameScale(url, scale) {
         var iframe = document.getElementById('iframe');
         iframe.src = ''; //reset
         iframe.src = url;
         $(document).ready(function() {
               var scaleVar = 'scale('+scale+')';
-              document.body.style.webkitTransform =  scaleVar;
-              document.getElementById('mydiv').scrollTop = scrollY;
-              document.getElementById('mydiv').scrollLeft = scrollX;
+              document.body.style.webkitTransform = scaleVar;
         });
       }
     </script>
