@@ -4,33 +4,17 @@
 	    <meta http-equiv="content-type" 
 		  content="text/html; charset=utf-8">
 
-    <style type='text/css'>
-      html, body {padding: 0; margin: 0;}
-      body {width: 100%; overflow: auto; background: #FFF; }
-      #iframe {overflow: auto; transform-origin: 0% 0%;}
-    </style>
-    <script
-    src="https://code.jquery.com/jquery-3.3.0.min.js"
-    integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4="
-    crossorigin="anonymous"></script>
-	</head>
-
-	<body style='display: block;'>
+	<body>
 		<iframe src="" frameborder="0" framespacing="0" scrolling="auto" marginheight='0' marginwidth='0' id='iframe'></iframe>
 	<script type='text/javascript'>
-     window.onload = function() {
-     	updateFrameScale('http://www.welstory.com/menu/seoulrnd/menu.jsp', window.innerHeight/640);};
-     function updateFrameScale(url, scale) {
-        var iframe = document.getElementById('iframe');
-        iframe.src = ''; //reset
-        iframe.src = url;
-        iframe.width = scale * 640 + 'px';
-        iframe.height = scale * 1000 + 'px';
-        $(document).ready(function() {
-              var scaleVar = 'scale('+scale+')';
-              iframe.style.webkitTransform = scaleVar;
-        });
-      }
+	function zooom() {
+	    var viewport = document.querySelector('meta[name="viewport"]');
+	    if (viewport) {
+	    	viewport.content = "initial-scale=0.1";
+	    	viewport.content = "width=640";
+	    }
+	}
+	zooom();
     </script>
 	</body>
 </html>
