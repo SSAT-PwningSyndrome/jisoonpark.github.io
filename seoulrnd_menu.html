@@ -3,16 +3,37 @@
 		<title>::Seoul R&D Campus Menu::</title>
 	    <meta http-equiv="content-type" 
 		  content="text/html; charset=utf-8">
+
+    <style type='text/css'>
+      html, body {width: 100%; height: 100%; padding: 0; margin: 0;}
+      body {overflow:hiddent; background: #FFF;}
+      #mydiv {border-style: inset; border-color: grey; overflow: scroll; height: 100%; width: 100%}
+      #iframe {width: 100%; height: 1000%;} <!-- The trick is to set the height here to 1000% -->
+    </style>
+    <script
+    src="https://code.jquery.com/jquery-3.3.0.min.js"
+    integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4="
+    crossorigin="anonymous"></script>
 	</head>
 
 	<body>
-	<div>
-		<iframe name="menu" id="menu" src="http://www.welstory.com/menu/seoulrnd/menu.jsp" frameborder="1" framespacing="0" scrolling="auto" style="width: 620px; height: 960px;">
+	<div id='mydiv'>
+		<iframe src="" frameborder="0" framespacing="0" scrolling="auto" marginheight='0' marginwidth='0' seamless='seamless' id='iframe'></iframe>
 	</div>
+	<script type='text/javascript'>
+     window.onload = function() {
+        updateFrameScale('http://www.welstory.com/menu/seoulrnd/menu.jsp', 0, 100, 1.5);                  };
+     function updateFrameScale(url, scrollX, scrollY, scale) {
+        var iframe = document.getElementById('iframe');
+        iframe.src = ''; //reset
+        iframe.src = url;
+        $(document).ready(function() {
+              var scaleVar = 'scale('+scale+')';
+              document.body.style.webkitTransform =  scaleVar;
+              document.getElementById('mydiv').scrollTop = scrollY;
+              document.getElementById('mydiv').scrollLeft = scrollX;
+        });
+      }
+    </script>
 	</body>
-
-	<script>
-		var zoom = window.innerWidth/620;
-		document.body.style.zoom=zoom + '%';
-	</script>
 </html>
