@@ -16,16 +16,32 @@
   </head>
 
   <body style='display: block;'>
-    <iframe src="" frameborder="0" framespacing="0" scrolling="auto" marginheight='0' marginwidth='0' id='iframe'></iframe>
+    <iframe src="" frameborder="0" framespacing="0" scrolling="auto" marginheight='0' marginwidth='0' id='iframe'>
+    </iframe>
   <script type='text/javascript'>
-     window.onload = function() {
-      updateFrameScale('http://www.welstory.com/menu/seoulrnd/menu.jsp', window.innerHeight/640);};
+    window.onload = function() {
+        var dt = new Date();
+        var cur = dt.getHours() * 60 + dt.getMinutes();    //get current time
+        var meal_type = 1;                 //default:show breakfast menu
+        if (cur > 9 * 60 + 20) {           //show lunch ment after 9:20
+            meal_type = 2;
+        }
+        if (cur > 13 * 60) {               //show dinner menu after 13:00
+            meal_type = 3;
+        }
+
+        //link for welstory's seoulrnd menu
+        var link = 'http://www.welstory.com/menu/seoulrnd/menu.jsp?meal_type=' + meal_type;
+
+    updateFrameScale(link, window.innerHeight/600);};
+
+     //fit menu screen to window
      function updateFrameScale(url, scale) {
         var iframe = document.getElementById('iframe');
         iframe.src = ''; //reset
         iframe.src = url;
-        iframe.width = 640 + 'px';
-        iframe.height = 1000 + 'px';
+        iframe.width = 600 + 'px';
+        iframe.height = 1100 + 'px';
         $(document).ready(function() {
               var scaleVar = 'scale('+scale+')';
               iframe.style.webkitTransform = scaleVar;
